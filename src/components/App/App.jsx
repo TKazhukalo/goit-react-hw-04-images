@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from 'react';
 import * as API from '../services/api';
-import SearchBar from '../SearchBar/SearchBar';
+import { SearchBar } from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
