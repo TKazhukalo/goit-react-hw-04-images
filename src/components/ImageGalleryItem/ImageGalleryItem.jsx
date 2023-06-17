@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Modal from '../Modal/Modal';
+import { Modal } from '../Modal/Modal';
 import { Item, Img } from './ImageGalleryItem.styled';
 
 export const ImageItem = ({ image: { webformatURL, tags, largeImageURL } })=> {
@@ -11,7 +11,7 @@ const toggleModal = () => {
    setShowModal(showModal=>!showModal);
    
   };
-  
+
     return (
       <>
         <Item>
