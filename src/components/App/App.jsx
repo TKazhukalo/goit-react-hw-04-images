@@ -11,7 +11,7 @@ export const App = () => {
   const [searchName, setSearchName] = useState('');
   const [images, setImages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [error, setError] = useState(null);
+  //const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
  
@@ -19,11 +19,9 @@ export const App = () => {
     if (searchName === '') {
       return;
     }
-
-
-    const addImages = async () => {
-      try {
-        setIsLoading(true);
+const addImages = async () => {
+  try {
+      setIsLoading(true);
         const data = await API.getImages(searchName, currentPage);
         if (data.hits.length === 0) {
           return toast.info(' Нічого не знайдено...🙈', {
@@ -33,10 +31,9 @@ export const App = () => {
         const normalizedImages = API.normalizedImages(data.hits);
         setImages((prevImages) => [...prevImages, ...normalizedImages])
         setIsLoading(false);
-        setError('');
         setTotalPages(Math.ceil(data.totalHits / 12));
       }
-      catch (error) {
+      catch {
         toast.error('Щось пішло не так 😱!');
       } finally {
         setIsLoading(false);
@@ -45,31 +42,14 @@ export const App = () => {
     addImages();
   },[searchName, currentPage]);
 
-
-
-
- 
-
 const loadMore = () => {
   setCurrentPage(prevState => prevState + 1);
 };
-
-
- 
 const  handleSubmit = query => {
-
   setSearchName(query);
   setImages([]); 
   setCurrentPage(1);
     };
-
-
-
- 
-
- 
-   // const { images, isLoading, currentPage, totalPages } = this.state;
-
     return (
       <div>
         <ToastContainer transition={Slide} />
